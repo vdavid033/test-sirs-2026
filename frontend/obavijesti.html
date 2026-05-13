@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link rel="stylesheet" href="css/stilovi.css"-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <title>Knjižnica - korisnici</title>
+    <script>
+        function oznaci(){
+            let li = document.getElementsByTagName("li")
+            for (let i=0; i<li.length; i++){
+                li[i].style.backgroundColor="white" //document.getElementsByTagName("body")[0].backgroundColor
+            }
+            this.style.backgroundColor="yellow"
+        }
+    </script>
+</head>
+<body>
+    <nav class="w3-bar w3-black">
+        <a href="index.html" class="w3-bar-item w3-button w3-mobile">Početna stranica</a>
+        <a href="korisnici.html" class="w3-bar-item w3-button w3-mobile">Korisnici knjižnice</a>
+        <a href="obavijesti.html" class="w3-bar-item w3-button w3-mobile">Obavijesti</a>
+        <a href="unosknjiga.html" class="w3-bar-item w3-button w3-mobile">Unos knjiga</a>
+    </nav>
+    <div class="w3-container w3-red">
+        <h1>Knjižnica</h1>
+    </div>
+    <div class="w3-container w3-pale-red">
+        <h2 id="podnaslov">Obavijesti knjižnice</h2>
+    </div>
+    <div class="w3-container tijelo">
+        <ol>
+            <li>6.11.2025. knjižnica je otvorena od 11:00 - 19:00</li>
+            <li>24.12.2025. Božićna priredba</li>
+        </ol>
+    </div>
+    <footer class="w3-container w3-red" id="okvir">
+        <h5>Veleučilište u Rijeci</h5>
+    </footer>
+
+    <script>
+        let li = document.getElementsByTagName("li")
+        for (let i=0; i<li.length; i++){
+            li[i].addEventListener("click", oznaci, false)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Početna web stranica</title>
+</head>
+
+<body>
+    <nav class="w3-bar w3-black">
+        <a href="index.html" class="w3-bar-item w3-button w3-mobile">Početna stranica</a>
+        <a href="korisnici.html" class="w3-bar-item w3-button w3-mobile">Korisnici knjižnice</a>
+        <a href="obavijesti.html" class="w3-bar-item w3-button w3-mobile">Obavijesti</a>
+        <a href="unosknjiga.html" class="w3-bar-item w3-button w3-mobile">Unos knjiga</a>
+    </nav>
+    <div class="w3-container w3-red">
+        <h1>Početna web stranica</h1>
+    </div>
+    <div class="w3-container w3-pale-red">
+        <h2>Sustav knjižnice</h2>
+    </div>
+    <div class="w3-container">
+        <div>
+            Sustav knjižnice sadrži popis knjiga
+        </div>
+        <div class="tijelo">
+            <b>Popis knjiga:</b>
+        </div>
+        <!--knjige iz baze podataka-->
+        <table id="knjige"></table>
+
+
+        <div class="tijelo">
+
+            <table border="1px">
+                <tr>
+                    <th>Autor</th>
+                    <th>Naslov</th>
+                    <th>Slika</th>
+                </tr>
+                <tr>
+                    <td>Tahereh Mafi</td>
+                    <td>Istkano kraljevstvo</td>
+                    <td><img src="https://znanje.hr/product-images/aad12c05-d5db-4961-97f9-b0eec753fd47.jpg"
+                            alt="Istkano kraljevstvo.jpg" width="200px"></td>
+                </tr>
+                <tr>
+                    <td>Harriet Constable</td>
+                    <td>Violinistica</td>
+                    <td><img src="images/violinistica.jpg" alt="Violinistica.jpg" width="200px"></td>
+                </tr>
+                <tr>
+                    <td>Yrsa Sigurđardóttir</td>
+                    <td>Lutka</td>
+                    <td><img src="images/lutka.jpg" alt="Lutka.jpg" width="200px"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <footer class="w3-container w3-red" id="okvir">
+        <h5>Veleučilište u Rijeci</h5>
+    </footer>
+    <script>
+        console.log("test");
+        axios.get('http://localhost:3000/getknjige')
+            .then(response => {
+                const knjige = response.data;
+                console.log("1 "+knjige);
+                let output = ""
+                for (let i=0; i<knjige.length; i++) {
+                    output += "<tr><td>"+knjige[i].autor+"</td>"+
+                        "<td>"+knjige[i].naslov+"</td>"+
+                        "<td><img src='"+knjige[i].slika+"'></td></tr>"
+                }
+                console.log(output);
+                document.getElementById('knjige').innerHTML = output;
+            })
+            .catch(error => {
+                console.log("error", error)
+            })
+    </script>
+
+</body>
+
+</html>

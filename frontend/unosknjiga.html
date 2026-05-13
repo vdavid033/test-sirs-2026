@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="hr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Početna web stranica</title>
+    <script>
+        function provjeri(){
+            let autor = document.getElementById("autor").value
+            let naslov = document.getElementById("naslov").value
+            document.getElementById("provjera").innerHTML = "<div>Autor:"+autor+"</div><div>Naslov:"+naslov+"</div>"
+            console.log(autor)
+        }
+        function posalji(){
+            let autor = document.getElementById("autor").value
+            let naslov = document.getElementById("naslov").value
+            let slika = document.getElementById("slika").value
+            console.log("autor"+autor)
+            let knjiga = {
+                autor: autor,
+                naslov: naslov,
+                slika: slika
+            }
+            console.log("knjiga"+knjiga.autor)
+            axios.post('http://localhost:3000/addknjiga', JSON.stringify(knjiga), 
+                {headers: {'Content-Type': 'application/json'}})
+                .then(response => {
+                    console.log(response);
+                    alert("Poslano!");
+                })
+                .catch(error => {
+                    console.log("error", error)
+                })
+        }
+    </script>
+</head>
+<body>
+    <nav class="w3-bar w3-black">
+        <a href="index.html" class="w3-bar-item w3-button w3-mobile">Početna stranica</a>
+        <a href="korisnici.html" class="w3-bar-item w3-button w3-mobile">Korisnici knjižnice</a>
+        <a href="obavijesti.html" class="w3-bar-item w3-button w3-mobile">Obavijesti</a>
+        <a href="unosknjiga.html" class="w3-bar-item w3-button w3-mobile">Unos knjiga</a>
+
+    </nav>
+    <div class="w3-container w3-red">
+        <h1>Knjižnica</h1>
+    </div>
+    <div class="w3-container w3-pale-red">
+        <h2>Unos knjiga</h2>
+    </div>
+    <div class="w3-container">
+        <label class="w3-text-red"><b>Autor</b></label>
+        <input class="w3-input w3-border" type="text" id="autor">
+
+        <label class="w3-text-red"><b>Naslov</b></label>
+        <input class="w3-input w3-border" type="text" id="naslov">
+        <label class="w3-text-red"><b>Slika</b></label>
+        <input class="w3-input w3-border" type="text" id="slika">
+
+        <button class="w3-btn w3-black" onclick="posalji()">Spremi</button>
+    </div>
+
+    <div id="provjera"></div>
+    <footer class="w3-container w3-red" id="okvir">
+        <h5>Veleučilište u Rijeci</h5>
+    </footer>
+</body>
+
+</html>

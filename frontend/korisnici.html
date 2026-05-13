@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--link rel="stylesheet" href="css/stilovi.css"-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <title>Knjižnica - korisnici</title>
+    <script>
+        function ispisKorisnika(){
+            let korisnici = ["Iva Ivić","Pero Perić","Antonio Antić","Majda Majić"]
+            for (var i=0; i<korisnici.length; i++){
+
+                document.write("<li>"+korisnici[i]+"</li>")
+            }
+        }
+        function ispisiObavijest(){
+            document.write("<div>Obavijest: Korisnici mogu koristiti knjižnicu u vremenu 9:00-21:00 svakim radnim danom</div>")
+        }
+        function ispisiPodnozje(){
+            document.write("<footer class='w3-container w3-red' id='okvir'>"+
+                "<h5>Veleučilište u Rijeci, Stručni studij Telematike</h5></footer>")
+        }
+        function promijeniPodnaslov(){
+            document.getElementById("podnaslov").innerHTML = "Trenutni korisnici knjižnice"
+        }
+</script>
+</head>
+<body>
+    <nav class="w3-bar w3-black">
+        <a href="index.html" class="w3-bar-item w3-button w3-mobile">Početna stranica</a>
+        <a href="korisnici.html" class="w3-bar-item w3-button w3-mobile">Korisnici knjižnice</a>
+        <a href="obavijesti.html" class="w3-bar-item w3-button w3-mobile">Obavijesti</a>
+        <a href="unosknjiga.html" class="w3-bar-item w3-button w3-mobile">Unos knjiga</a>
+    </nav>
+    <div class="w3-container w3-red">
+        <h1>Knjižnica</h1>
+    </div>
+    <div class="w3-container w3-pale-red">
+        <h2 id="podnaslov">Korisnici knjižnice</h2>
+    </div>
+    <div class="w3-container tijelo">
+        <ol>
+            <script>
+                ispisKorisnika()
+            </script>
+        </ol>
+    </div>
+    <script>
+        ispisiObavijest()
+        console.log("Test")
+        ispisiPodnozje()
+        promijeniPodnaslov()
+    </script>
+
+</body>
+</html>
